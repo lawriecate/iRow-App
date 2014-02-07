@@ -1,0 +1,205 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>iRow Athlete App</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head> 
+
+<body> 
+<!-- Start of first page -->
+<div data-role="page" id="splash">
+
+	<div data-role="header">
+		<h1>Welcome</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>This page is displayed while the app authorizes you</p>		
+		<p>View internal page called <a href="#logbook" data-transition="pop">logbook</a></p>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>LGC</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of login page -->
+<div data-role="page" id="login">
+
+	<div data-role="header">
+		<h1>Login</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>Login Form Goes Here</p>	
+		<p>View internal page called <a href="#logbook" data-transition="pop">logbook</a></p>		
+		<p>View internal page called <a href="#add" data-transition="slide">register</a></p>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>LGC</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of sign up page -->
+<div data-role="page" id="register">
+
+	<div data-role="header">
+		<h1>Sign Up</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>Register Form Goes Here.  For now please register on at <a href="http://beta.irow.co.uk/register" target="_blank">beta.irow.co.uk/register</a></p>	
+		<p>View internal page called <a href="#logbook" data-transition="pop">logbook</a></p>		
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4></h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of login page -->
+<div data-role="page" id="logbook">
+
+	<div data-role="header">
+		<h1>Logbook</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<ul data-role="listview" data-theme="d" data-divider-theme="d">
+			<li data-role="list-divider">Friday, October 8, 2010 <span class="ui-li-count">2</span></li>
+			<li><a href="index.html">
+				
+					<h3>Stephen Weber</h3>
+					<p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+					<p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+					<p class="ui-li-aside"><strong>6:24</strong>PM</p>
+				
+			</a></li>
+			<li><a href="index.html">
+				
+				<h3>jQuery Team</h3>
+				<p><strong>Boston Conference Planning</strong></p>
+				<p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
+				<p class="ui-li-aside"><strong>9:18</strong>AM</p>
+				
+			</a></li>
+			<li data-role="list-divider">Thursday, October 7, 2010 <span class="ui-li-count">1</span></li>
+			<li><a href="index.html">
+				<h3>Avery Walker</h3>
+				<p><strong>Re: Dinner Tonight</strong></p>
+				<p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait! </p>
+				<p class="ui-li-aside"><strong>4:48</strong>PM</p>
+			</a></li>
+			<li data-role="list-divider">Wednesday, October 6, 2010 <span class="ui-li-count">3</span></li>
+			<li><a href="index.html">
+				<h3>Amazon.com</h3>
+				<p><strong>4-for-3 Books for Kids</strong></p>
+				<p>As someone who has purchased children's books from our 4-for-3 Store, you may be interested in these featured books.</p>
+				<p class="ui-li-aside"><strong>12:47</strong>PM</p>
+			</a></li>
+			<li><a href="index.html">
+				<h3>Mike Taylor</h3>
+				<p><strong>Re: This weekend in Maine</strong></p>
+				<p>Hey little buddy, sorry but I can't make it up to vacationland this weekend. Maybe next weekend?</p>
+				<p class="ui-li-aside"><strong>6:24</strong>AM</p>
+			</a></li>
+		</ul>
+		<p>View internal page called <a href="#add" data-transition="slideup">ADD Activity</a></p>		
+		<p>View internal page called <a href="#settings" data-transition="flip">settings</a></p>	
+	</div><!-- /content -->
+
+	<div data-role="footer" class="ui-bar">
+		<a href="#add" data-role="button" data-icon="plus" data-transition="slideup">Add</a>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of log page -->
+<div data-role="page" id="add">
+
+	<div data-role="header">
+		<h1>Log Activity</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<form action="#" method="get">
+			<div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			     	<legend>Type:</legend>
+			         	<input type="radio" name="radio-choice-b" id="radio-choice-c" value="on" checked="checked" />
+			         	<label for="radio-choice-c">Erg</label>
+			         	<input type="radio" name="radio-choice-b" id="radio-choice-d" value="off" />
+			         	<label for="radio-choice-d">Water</label>
+			         	<input type="radio" name="radio-choice-b" id="radio-choice-e" value="other" />
+			         	<label for="radio-choice-e">Indoor</label>
+			         	<input type="radio" name="radio-choice-b" id="radio-choice-e" value="other" />
+			         	<label for="radio-choice-e">Outdoor</label>
+			    </fieldset>
+
+			</div>
+			<div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup" data-type="horizontal">
+			     	<legend>Type:</legend>
+			         	<input type="radio" name="radio-choice-b" id="radio-choice-c" value="on" checked="checked" />
+			         	<label for="radio-choice-c">Timed</label>
+			         	<input type="radio" name="radio-choice-b" id="radio-choice-d" value="off" />
+			         	<label for="radio-choice-d">Distance</label>
+
+			    </fieldset>
+
+			</div>
+
+
+			<div data-role="fieldcontain">
+	         <label for="name">When:</label>
+	         <input type="date" name="name" id="name" value=""  />
+			</div>
+
+			<div data-role="fieldcontain">
+			<label for="textarea">Notes:</label>
+			<textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+			</div>
+
+			
+
+
+		<div class="ui-body ui-body-b">
+		<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
+				<div class="ui-block-b"><button type="submit" data-theme="a">Submit</button></div>
+	    </fieldset>
+		</div>
+	</form>
+		<p>View internal page called <a href="#logbook" data-transition="slidedown">logbook</a></p>		
+	</div><!-- /content -->
+
+	<div data-role="footer" class="ui-bar">
+		<a href="#logbook" data-role="button" data-icon="plus" data-transition="slidedown">Finish &amp; Save</a>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of login page -->
+<div data-role="page" id="settings">
+
+	<div data-role="header">
+		<h1>Login</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>Settings Form Goes Here</p>	
+		<p>View internal page called <a href="#logbook" data-transition="flip">logbook</a></p>		
+
+	</div><!-- /content -->
+
+	<div data-role="footer"  class="ui-bar">
+		<a href="#logbook" data-role="button" data-icon="plus" data-transition="flip">Save</a>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>
