@@ -217,13 +217,14 @@
 </div><!-- /page -->
 <script type="text/javascript">
 $.support.cors = true;
-$( document ).delegate("#login", "pageinit", function() {
-
 	$( document ).bind( "mobileinit", function() {
 	    // Make your jQuery Mobile framework configuration changes here!
 
 	    $.mobile.allowCrossDomainPages = true;
 	});
+$( document ).delegate("#login", "pageinit", function() {
+
+
 
  	$("#loginForm").submit(function() {
  		event.preventDefault();
