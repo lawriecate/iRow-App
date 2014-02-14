@@ -18,11 +18,19 @@
 		font-size: 7em;
 		margin: 0;
 }
-	#splash h1,h2 {
+	#splash h1,h2,h3 {
 		color: #fff;
 		 text-shadow: 1px 0px 20px #000;
 		 text-stroke:1px #000 ;
 		text-align: center;
+	}
+
+	#splash p,.protomsg {
+		background: rgba(0,0,0,0.5);
+		padding: 4px;
+		border-radius: 4px;
+		text-shadow:none;
+		color: #fff;
 	}
 	</style>
 </head> 
@@ -37,10 +45,11 @@
 
 	<div data-role="content">	
 		<h1>iRow</h1>
+		<h3>Prototype</h3>
 		<h2>Welcome</h2>
-		<p>This page is displayed while the app authorizes you</p>		
-		<p>View internal page called <a href="#logbook" data-transition="pop">logbook</a></p>	
-<p>View internal page called <a href="#login" data-transition="pop">login</a></p>	
+		<p>This is the iRow prototype app, for testing purposes only.</p>		
+			
+		<p><a href="#login" data-transition="slideup">Click here to start</a></p>	
 
 	</div><!-- /content -->
 
@@ -69,15 +78,15 @@
 	         <input type="password" name="password" id="loginPassword" value=""  />
 			</div>
 			
-			<div class="ui-body ui-body-b">
-					<div class="ui-block-b"><button type="submit" data-theme="a">Sign In</button></div>
+			<div class="ui-body ">
+					<div class=""><button type="submit" data-theme="a">Sign In</button></div>
 			</div>
 	</form>
 		<p>View internal page called <a href="#logbook" data-transition="pop">logbook</a></p>		
 		<p>View internal page called <a href="#add" data-transition="slide">register</a></p>	
 	</div><!-- /content -->
 
-	<div data-role="footer">
+	<!--<div data-role="footer">
 		<h4>LGC</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
@@ -94,7 +103,7 @@
 		<p>View internal page called <a href="#logbook" data-transition="pop">logbook</a></p>		
 	</div><!-- /content -->
 
-	<div data-role="footer">
+	<div data-role="footer" >
 		<h4></h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
@@ -114,7 +123,7 @@
 		<p>View internal page called <a href="#settings" data-transition="flip">settings</a></p>	
 	</div><!-- /content -->
 
-	<div data-role="footer" class="ui-bar">
+	<div data-role="footer" class="ui-bar" data-position="fixed">
 		<a href="#add" data-role="button" data-icon="plus" data-transition="slideup">Add</a>
 	</div><!-- /footer -->
 </div><!-- /page -->
@@ -129,16 +138,16 @@
 	<div data-role="content">	
 		<form action="#" method="get">
 			<div data-role="fieldcontain">
-			    <fieldset data-role="controlgroup" data-type="horizontal">
+			    <fieldset data-role="controlgroup" >
 			     	<legend>Type:</legend>
-			         	<input type="radio" name="radio-choice-b" id="radio-choice-c" value="on" checked="checked" />
-			         	<label for="radio-choice-c">Erg</label>
-			         	<input type="radio" name="radio-choice-b" id="radio-choice-d" value="off" />
-			         	<label for="radio-choice-d">Water</label>
-			         	<input type="radio" name="radio-choice-b" id="radio-choice-e" value="other" />
-			         	<label for="radio-choice-e">Indoor</label>
-			         	<input type="radio" name="radio-choice-b" id="radio-choice-e" value="other" />
-			         	<label for="radio-choice-e">Outdoor</label>
+			         	<input type="radio" name="type" id="radio-choice-a" value="1" checked="checked" />
+			         	<label for="radio-choice-a">Erg</label>
+			         	<input type="radio" name="type" id="radio-choice-b" value="2" />
+			         	<label for="radio-choice-b">Water</label>
+			         	<input type="radio" name="type" id="radio-choice-c" value="3" />
+			         	<label for="radio-choice-c">Indoor</label>
+			         	<input type="radio" name="type" id="radio-choice-d" value="4" />
+			         	<label for="radio-choice-d">Outdoor</label>
 			    </fieldset>
 
 			</div>
@@ -178,7 +187,7 @@
 		<p>View internal page called <a href="#logbook" data-transition="slidedown">logbook</a></p>		
 	</div><!-- /content -->
 
-	<div data-role="footer" class="ui-bar">
+	<div data-role="footer" class="ui-bar"  data-position="fixed">
 		<a href="#logbook" data-role="button" data-icon="plus" data-transition="slidedown">Finish &amp; Save</a>
 	</div><!-- /footer -->
 </div><!-- /page -->
@@ -187,27 +196,47 @@
 <div data-role="page" id="settings">
 
 	<div data-role="header">
-		<h1>Login</h1>
+		<h1>Settings</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
 		<p>Settings Form Goes Here</p>	
 		<p>View internal page called <a href="#logbook" data-transition="flip">logbook</a></p>		
-
+		
+		<a href="#logout" data-role="button">Sign Out</a>
+	
 	</div><!-- /content -->
 
-	<div data-role="footer"  class="ui-bar">
+	<div data-role="footer"  class="ui-bar" data-position="fixed">
 		<a href="#logbook" data-role="button" data-icon="plus" data-transition="flip">Save</a>
 	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of login page -->
+<div data-role="page" id="logout">
+
+	
+	<div data-role="content">	
+		<h1>Bye bye!</h1>
+	</div><!-- /content -->
+
+	
 </div><!-- /page -->
 <script type="text/javascript" src="sha1.js"></script>
 <script type="text/javascript">
 $.support.cors = true;
 var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 	$( document ).bind( "mobileinit", function() {
-	    // Make your jQuery Mobile framework configuration changes here!
-
 	    $.mobile.allowCrossDomainPages = true;
+
+	});
+	$(document).delegate("#splash","pageinit",function() {
+		logged_in = localStorage.getItem("logged_in");
+		
+		if(logged_in == "true") {
+			$.mobile.changePage( "#logbook");
+		}
+
 	});
 	$( document ).delegate("#login", "pageinit", function() {
 
@@ -222,6 +251,7 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 	 			console.log("user is now logged in!");
 	        	localStorage.setItem("token_private", data.k2);
 	      		localStorage.setItem("token_public", data.k1);
+	      		localStorage.setItem("logged_in",true);
 	      		$.mobile.changePage( "#logbook");
 	 		}).fail(function() {
 	 			alert('You couldn\'t be logged in')
@@ -252,6 +282,14 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 			});
 			$( "#logbookList" ).listview( "refresh" );
 		});
+	});
+
+	$( document ).delegate("#logout", "pagebeforecreate", function() {
+			localStorage.setItem("token_private",null);
+			localStorage.setItem("token_public",null);
+			localStorage.setItem("logged_in",false);
+		$.mobile.changePage( "#splash");
+		
 	});
 </script>
 </body>
