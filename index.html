@@ -231,6 +231,7 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 
 	});
 	$(document).delegate("#splash","pageinit",function() {
+		console.log("Splash loaded");
 		logged_in = localStorage.getItem("logged_in");
 		
 		if(logged_in == "true") {
