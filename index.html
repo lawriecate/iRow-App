@@ -254,8 +254,9 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 	      		localStorage.setItem("token_public", data.k1);
 	      		localStorage.setItem("logged_in",true);
 	      		$.mobile.changePage( "#logbook");
-	 		}).fail(function() {
-	 			alert('You couldn\'t be logged in')
+	 		}).error(function(jqXHR, textStatus, errorThrown) {
+	 			alert('You couldn\'t be logged in');
+	 			console.log(textStatus);
 	 		});
 	 	});
 	});
