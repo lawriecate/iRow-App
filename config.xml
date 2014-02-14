@@ -17,6 +17,6 @@
         Lawrie Cate
     </author>
 
-    <access origin="http://irow.co.uk" />
+    <access origin="http://irow.co.uk" subdomains="true" />
 
 </widget>
