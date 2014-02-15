@@ -270,33 +270,42 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 	}
 
 	$( document ).delegate("#logbook", "pageinit", function() {
-		logbookUrl = (getAuthorizedUrl("http://beta.irow.co.uk/api/logbook_feed/"));
+		
 		
 		sync();
 		if(localStorage.getItem("logbookp1") == "") {
 			console.log("No logbook data found");
 		}
-		displayLogbook();
 		
+		
+	});
+
+	$( "#btnSync" ).bind( "tap", function() {
+		sync();
+
 	});
 
 	function sync() {
 		console.log("Syncing data");
-		$.mobile.loading('show')
+		$.mobile.loading('show');
+		logbookUrl = (getAuthorizedUrl("http://beta.irow.co.uk/api/logbook_feed/"));
 		$.ajax({
 			url: logbookUrl,
-			
-            done: function() {  $.mobile.loading('hide') },
             dataType: 'text',
 			success: function(logbookData) {
 				localStorage.setItem("logbookp1",logbookData);
 				
 				console.log("Sync successful");
+				displayLogbook();
+				$.mobile.loading('hide');
+
 			},
 			error: function() {
 				alert('iRow could not sync data');
+				$.mobile.loading('hide')
 			}
 		});
+		
 	}
 
 	function displayLogbook() {
