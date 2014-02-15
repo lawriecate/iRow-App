@@ -228,110 +228,6 @@
 $.support.cors = true;
 var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 
- // register PhoneGap event listeners when DOM content loaded
-        function init() {
-            console.log('init()');
-        }
- 
-        // retrieves root file system entry
-        var getFileSystemRoot = (function() {
- 
-            // private
-            var root;
-            
-            // one-time retrieval of the root file system entry
-            var init = function() {
-                window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
-                    function(fileSystem) {
-                        root = fileSystem.root;
-                    }, 
-                    onFileSystemError);
-            };
-            document.addEventListener("deviceready", init, true); 
- 
-            // public function returns private root entry
-            return function() {
-                return root;
-            };
-        }()); // execute immediately
- 
-        // file system error handler
-        function onFileSystemError(error) {
-            var msg = 'file system error: ' + error.code;
-            navigator.notification.alert(msg, null, 'File System Error');
-        }
- 
-        // logs file events
-        function onFileEvent(event) {
-            console.log('file event: ' + event.target.fileName + ' ' + event.type);
-        }
-      
-        // called when error reading file
-        function onFileError(event) {
-            console.log('file error: ' + event.target.error.code);
-        }
- 
-        // called when file is written
-        function onFileWrite(event) {
-            onFileEvent(event);
-            console.log('FileWriter position=' + 
-                event.target.position + ", length=" + event.target.length);
-        }
- 
-        // writes a text file to the device
-        function writeFile(filename,filedata) {
-                // root file system entry
-            var root = getFileSystemRoot(),
-            
-                // writes a file
-                write_file = function(writer) {
-                    var lineCount = 1;
-                              
-                    // set the callbacks
-                    writer.onwritestart = onFileEvent;
-                    writer.onprogress = onFileEvent;
-                    writer.onwrite = onFileWrite;
-                    writer.onabort = onFileEvent;
-                    writer.onerror = onFileError;
-                    writer.onwriteend = function(event) {
-                        onFileEvent(event);
-                        writer.write(filedata);
-                        else {
-                            alert(writer.fileName + 
-                                ' length=' + writer.length + 
-                                ', position=' + writer.position);
-                        }
-                    }
-                    
-                    // append
-                    writer.seek(writer.length);
-          
-                    // write to file
-                    writer.write('Line ' + lineCount + '.\r\n');   
-                },
-                
-                // creates a FileWriter object
-                create_writer = function(fileEntry) {
-                    fileEntry.createWriter(write_file, onFileSystemError);
-                };
-            
-            // create a file and write to it
-            root.getFile(filename, {create: true}, create_writer, onFileSystemError);
-        }
-        
-        // remove file system entry
-        function removeFile() {
-            var root = getFileSystemRoot();
-            var remove_file = function(entry) {
-                entry.remove(function() {
-                    navigator.notification.alert(entry.toURI(), null, 'Entry deleted');                    
-                }, onFileSystemError);
-            };
-            
-            // retrieve a file and truncate it
-            root.getFile('bbgap.txt', {create: false}, remove_file, onFileSystemError);
-        } 
-
 	$( document ).bind( "mobileinit", function() {
 	    $.mobile.allowCrossDomainPages = true;
 
@@ -376,16 +272,37 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 	$( document ).delegate("#logbook", "pagebeforecreate", function() {
 		logbookUrl = (getAuthorizedUrl("http://beta.irow.co.uk/api/logbook_feed/"));
 		console.log(logbookUrl);
+		sync();
+		if(localStorage.getItem("logbookp1") == "") {
+			console.log("No logbook data found");
+		}
+		displayLogbook();
+		
+	});
 
-		$.mobile.loading('show');
+	function sync() {
+		console.log("Syncing data");
+		$.mobile.loading('show')
 		$.ajax({
 			url: logbookUrl,
 			
             done: function() {  $.mobile.loading('hide') },
-            dataType: 'json',
+            dataType: 'text',
 			success: function(logbookData) {
-				writeFile("page1.irowlog",logbookData);
-				var lastDate = null;
+				localStorage.setItem("logbookp1",logbookData);
+				
+				console.log("Sync successful");
+			},
+			error: function() {
+				alert('iRow could not sync data');
+			}
+		});
+	}
+
+	function displayLogbook() {
+		$('#logbookList').html('');
+		var logbookData = $.parseJSON(localStorage.getItem("logbookp1"));
+		var lastDate = null;
 				var dividerCounter = 1;
 				$.each(logbookData,function(key,object) {
 					var li = '';
@@ -403,7 +320,7 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 		+'					<h3>'+object.label+'</h3>'
 		+ '					<p><strong>'+object.split+'</strong></p>'
 		+ '					<p></p>'
-		+ '					<p class="ui-li-aside"><strong></strong>PM</p>'				
+		+ '					<p class="ui-li-aside"><strong></strong></p>'				
 		+	'		</a></li>';
 						jqLi = $(li);
 						
@@ -412,9 +329,7 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 						
 				});
 					$( "#logbookList" ).listview( "refresh" );
-			}
-		});
-	});
+	}
 
 	$( document ).delegate("#logout", "pagebeforecreate", function() {
 			localStorage.setItem("token_private",null);
