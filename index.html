@@ -269,9 +269,9 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 		return newUrl;
 	}
 
-	$( document ).delegate("#logbook", "pagebeforecreate", function() {
+	$( document ).delegate("#logbook", "pageinit", function() {
 		logbookUrl = (getAuthorizedUrl("http://beta.irow.co.uk/api/logbook_feed/"));
-		console.log(logbookUrl);
+		
 		sync();
 		if(localStorage.getItem("logbookp1") == "") {
 			console.log("No logbook data found");
