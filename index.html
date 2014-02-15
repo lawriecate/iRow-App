@@ -279,7 +279,7 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
         }
  
         // writes a text file to the device
-        function writeFile() {
+        function writeFile(filename,filedata) {
                 // root file system entry
             var root = getFileSystemRoot(),
             
@@ -295,11 +295,7 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
                     writer.onerror = onFileError;
                     writer.onwriteend = function(event) {
                         onFileEvent(event);
-                        lineCount += 1;
-                        if (lineCount <= 3) {
-                            // append a new line   
-                            writer.write('Line ' + lineCount + '.\r\n');  
-                        } 
+                        writer.write(filedata);
                         else {
                             alert(writer.fileName + 
                                 ' length=' + writer.length + 
@@ -320,7 +316,7 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
                 };
             
             // create a file and write to it
-            root.getFile('bbgap.txt', {create: true}, create_writer, onFileSystemError);
+            root.getFile(filename, {create: true}, create_writer, onFileSystemError);
         }
         
         // remove file system entry
@@ -388,7 +384,7 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
             done: function() {  $.mobile.loading('hide') },
             dataType: 'json',
 			success: function(logbookData) {
-				writeFile();
+				writeFile("page1.irowlog",logbookData);
 				var lastDate = null;
 				var dividerCounter = 1;
 				$.each(logbookData,function(key,object) {
