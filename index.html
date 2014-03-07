@@ -108,10 +108,10 @@
 	</div><!-- /footer -->
 </div><!-- /page -->
 
-<!-- Start of login page -->
+<!-- Start of logbook page -->
 <div data-role="page" id="logbook">
 
-	<div data-role="header">
+	<div data-role="header"  data-position="fixed">
 		<h1>Logbook</h1>
 		<a href="#" data-icon="refresh" class="ui-btn-right" id="btnSync">Sync</a>
 	</div><!-- /header -->
@@ -120,8 +120,8 @@
 		<ul id="logbookList" data-role="listview" data-theme="d" data-divider-theme="d">
 		
 		</ul>
-		<p>View internal page called <a href="#add" data-transition="slideup">ADD Activity</a></p>		
-		<p>View internal page called <a href="#settings" data-transition="flip">settings</a></p>	
+		<!--<p>View internal page called <a href="#add" data-transition="slideup">ADD Activity</a></p>		
+		<p>View internal page called <a href="#settings" data-transition="flip">settings</a></p>-->	
 	</div><!-- /content -->
 
 	<div data-role="footer" class="ui-bar" data-position="fixed">
@@ -129,16 +129,40 @@
 	</div><!-- /footer -->
 </div><!-- /page -->
 
+<!-- Start of view page -->
+<div data-role="page" id="activity">
+
+	<div data-role="header">
+		<a href="#logbook" data-transition="slide" data-icon="arrow-l">Done</a>
+		<h1>View</h1>
+		
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<h1 id="viewLabel"></h1>
+		<p>Split: <span id="viewSplit">&nbsp;</span></p>
+		<p>Time: <span id="viewTime">&nbsp;</span></p>
+		<p>Distance: <span id="viewDistance">&nbsp;</span></p>
+		<p>Rate: <span id="viewRate">&nbsp;</span></p>
+		<p>HR: <span id="viewHr">&nbsp;</span></p>
+
+		<!--<p>View internal page called <a href="#add" data-transition="slideup">ADD Activity</a></p>		
+		<p>View internal page called <a href="#settings" data-transition="flip">settings</a></p>-->	
+	</div><!-- /content -->
+
+
+</div><!-- /page -->
+
 <!-- Start of log page -->
 <div data-role="page" id="add">
 
-	<div data-role="header">
+	<div data-role="header" data-position="fixed">
 		<h1>Log Activity</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
 		<form action="#" method="get">
-			<div data-role="fieldcontain">
+			<!--<div data-role="fieldcontain">
 			    <fieldset data-role="controlgroup" >
 			     	<legend>Type:</legend>
 			         	<input type="radio" name="type" id="radio-choice-a" value="1" checked="checked" />
@@ -162,34 +186,91 @@
 
 			    </fieldset>
 
-			</div>
+			</div>-->
+			<div class="fieldcontain">
+				<label for="inputType" class="select">Type:</label>
+				<select name="inputType" id="inputType">
+				   
+				</select>
+				</div>
 
 
 			<div data-role="fieldcontain">
 	         <label for="name">When:</label>
-	         <input type="date" name="name" id="name" value=""  />
+	         <input type="date" name="inputWhen" id="inputWhen" value=""  />
+			</div>
+
+			<div data-role="fieldcontain">
+	         <label for="name">Time:</label>
+	         <div class="ui-grid-b">
+	         	<div  class="ui-block-a">
+		         <input type="number" name="inputTime1" id="inputTime1" value="" min="0" max="60" placeholder="00"  />
+		     </div>
+		     <div class="ui-block-b"  style="width:4%">
+		        <p> :</p>
+		        </div>
+		        <div class="ui-block-c" >
+		         <input type="number" name="inputTime2" id="inputTime2" value="" min="0" max="60" placeholder="00.0" step="0.1"  />
+		     </div>
+		     </div>
+			</div>
+
+			<div data-role="fieldcontain">
+				<div class="ui-grid-b">
+
+		         <label for="inputDistance">Distance:</label>
+		         	<div  class="ui-block-a">
+			        	 <input type="number" name="inputDistance" id="inputDistance" value="" min="0" max="1000000" placeholder="0000"/>
+			   		</div>
+			   	</div>
+			</div>
+
+
+			<div data-role="fieldcontain">
+	         <label for="name">Split:</label>
+	         <div class="ui-grid-b">
+	         	<div  class="ui-block-a">
+		         <input type="number" name="inputSplit1" id="inputSplit1" value="" min="0" max="60" placeholder="0"  />
+		     </div>
+		     <div class="ui-block-b" style="width:4%">
+		        <p>:</p>
+		        </div>
+		        <div class="ui-block-c" >
+		         <input type="number" name="inputSplit2" id="inputSplit2" value="" min="0" max="60" placeholder="00.0" step="0.1" />
+		     </div>
+		     </div>
+			</div>
+
+			<div data-role="fieldcontain">
+				<div class="ui-grid-b">
+
+		         <label for="inputRate">Rate:</label>
+		         	<div  class="ui-block-a">
+			        	 <input type="number" name="inputRate" id="inputRate" value="" min="0" max="90" placeholder="00"/>
+			   		</div>
+			   	</div>
 			</div>
 
 			<div data-role="fieldcontain">
 			<label for="textarea">Notes:</label>
-			<textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
+			<textarea cols="40" rows="8" name="inputNotes" id="inputNotes"></textarea>
 			</div>
 
 			
 
 
-		<div class="ui-body ui-body-b">
+		<!--<div class="ui-body ui-body-b">
 		<fieldset class="ui-grid-a">
 				<div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div>
 				<div class="ui-block-b"><button type="submit" data-theme="a">Submit</button></div>
 	    </fieldset>
-		</div>
+		</div>-->
 	</form>
-		<p>View internal page called <a href="#logbook" data-transition="slidedown">logbook</a></p>		
+		<!--<p>View internal page called <a href="#logbook" data-transition="slidedown">logbook</a></p>		-->
 	</div><!-- /content -->
 
 	<div data-role="footer" class="ui-bar"  data-position="fixed">
-		<a href="#logbook" data-role="button" data-icon="plus" data-transition="slidedown">Finish &amp; Save</a>
+		<a href="#logbook" id="buttonLogAdd"  data-role="button" data-icon="plus" data-transition="slidedown">Finish &amp; Save</a>
 	</div><!-- /footer -->
 </div><!-- /page -->
 
@@ -269,10 +350,34 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 		return newUrl;
 	}
 
+	$( document ).delegate("#add", "pagebeforecreate", function() {
+		if(localStorage.getItem("exercise_types")) {
+			types = $.parseJSON(localStorage.getItem("exercise_types"));
+			$.each(types,function(key,obj) {
+				$.each(obj,function(key2,obj2){
+					$("#inputType").append('<option value="'+obj2.value+'">'+key+' - '+obj2.label+'</option>');
+				});
+			});
+			    var today = new Date();
+			    var dd = today.getDate();
+			    var mm = today.getMonth()+1; //January is 0!
+
+			    var yyyy = today.getFullYear();
+			    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} var today = yyyy+'-'+mm+'-'+dd;
+			    //document.getElementById("DATE").value = today;
+			    
+			$("#inputWhen").val(today);
+		}
+	});
+
 	$( document ).delegate("#logbook", "pageinit", function() {
 		
 		
-		sync();
+		if(sync()) {
+
+		}	else {
+			displayLogbook();
+		}
 		if(localStorage.getItem("logbookp1") == "") {
 			console.log("No logbook data found");
 		}
@@ -282,29 +387,71 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 
 	$( "#btnSync" ).bind( "tap", function() {
 		sync();
-
 	});
 
+	$("#buttonLogAdd").bind("tap",function() {
+		addUrl = (getAuthorizedUrl("http://beta.irow.co.uk/api/logbook_add/"));
+		data = {
+			inputType: $("#inputType").val(),
+			inputDistance: $("#inputDistance").val(),
+			inputTime: $("#inputTime1").val() + ":" + $("#inputTime2").val(),
+			inputSplit: $("#inputSplit1").val() + ":" + $("#inputSplit2").val(),
+			inputRate: $("#inputRate").val(),
+			inputDate: $("#inputDate").val()
+		};
+		
+		$.ajax({
+			url: addUrl,
+			dataType: 'json',
+			type: 'POST',
+			data: data,
+			success: function(data) {
+				console.log("Deets saved");
+				$.mobile.changePage( "#logbook");
+			},
+			error: function() {
+				console.log("Error during log");
+			}
+		})
+	});
+
+	function sync_json_to_ls(url,lsname) {
+			$.ajax({
+				url: url,
+	            dataType: 'text',
+	            async: false,
+				success: function(data) {
+					localStorage.setItem(lsname,data);
+					
+					console.log("Sync of "+url+" successful");
+					//
+					
+					return true;
+				},
+				error: function() {
+					console.log("Error during sync of " + url);
+					return false;
+				}
+			});
+		}
+
 	function sync() {
+		var status = true;
 		console.log("Syncing data");
 		$.mobile.loading('show');
 		logbookUrl = (getAuthorizedUrl("http://beta.irow.co.uk/api/logbook_feed/"));
-		$.ajax({
-			url: logbookUrl,
-            dataType: 'text',
-			success: function(logbookData) {
-				localStorage.setItem("logbookp1",logbookData);
-				
-				console.log("Sync successful");
-				displayLogbook();
-				$.mobile.loading('hide');
+		status = status && sync_json_to_ls(logbookUrl,"logbookp1");
+		if(status == true) {
+			displayLogbook();
+		} else {
+			//$("#syncError").show();
+		}
+		etypesUrl = getAuthorizedUrl("http://beta.irow.co.uk/api/exercise_types/");
+		status = status && sync_json_to_ls(etypesUrl,"exercise_types");
 
-			},
-			error: function() {
-				alert('iRow could not sync data');
-				$.mobile.loading('hide')
-			}
-		});
+		$.mobile.loading('hide');
+		
+		return status;
 		
 	}
 
@@ -319,13 +466,13 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 						$('span.ul-li-count').text(dividerCounter);
 						dividerCounter = 1;
 					 li 	+= '<li data-role="list-divider">'+object.date
-					+ '<span class="ui-li-count"></span></li>' ;
+					+ '<!--<span class="ui-li-count"></span>--></li>' ;
 					lastDate = object.date;
 					} else {
 						dividerCounter += 1;
 					}
 					
-					li += '<li><a href="view.html">'				
+					li += '<li><a href="#activity" data-transition="slide">'				
 		+'					<h3>'+object.label+'</h3>'
 		+ '					<p><strong>'+object.split+'</strong></p>'
 		+ '					<p></p>'
@@ -335,6 +482,13 @@ var apikey = "XZ8f7a50d6UrXegrqAXlNMhHD91O81z2";
 						
 
 						$("#logbookList").append(jqLi);
+						jqLi.delegate("a", "tap", function() {
+							$("#activity #viewLabel").text(object.label);
+							$("#activity #viewSplit").text(object.split);
+							$("#activity #viewDistance").text(object.distance);
+							$("#activity #viewTime").text(object.time);
+							$("#activity #viewRate").text(object.rate);
+						});
 						
 				});
 					$( "#logbookList" ).listview( "refresh" );
